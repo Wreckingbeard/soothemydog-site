@@ -8,10 +8,8 @@
     if(status)status.textContent='Image '+(i+1)+' of '+imgs.length;}
   function start(){if(reduce||timer)return;timer=setInterval(function(){show(i+1)},4000);setP(true);}
   function stop(){clearInterval(timer);timer=null;setP(false);}
-  function setP(on){var b=root.querySelector('.playpause');if(b){b.textContent=on?'Pause':'Play';b.setAttribute('aria-pressed',on)}}
+  function setP(on){var b=root.querySelector('.playpause');if(b){b.textContent=on?'⏸':'▶';b.setAttribute('aria-pressed',on);b.setAttribute('aria-label',on?'Pause slideshow':'Play slideshow')}}
   show(0);
-  root.querySelector('.prev').addEventListener('click',function(){show(i-1)});
-  root.querySelector('.next').addEventListener('click',function(){show(i+1)});
   root.querySelector('.playpause').addEventListener('click',function(){timer?stop():start()});
   if(!reduce) start();
 })();
